@@ -1,0 +1,11 @@
+PSTOPIC
+    about_PSConfigMgr
+
+SHORT DESCRIPTION
+    PSConfigMgr allows you to install or uninstall deployed applications and/or updates from ConfigMgr
+
+LONG DESCRIPTION
+    PSConfigMgr allows you to install or uninstall deployed applications and/or updates from ConfigMgr
+
+DETAILED DESCRIPTION
+    Functions that will invoke an Installation or Uninstallation of specified Application or updates in Software Center that's available for the remote computer.

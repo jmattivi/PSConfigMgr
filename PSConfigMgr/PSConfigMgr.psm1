@@ -8,7 +8,7 @@ Try
     . $PSScriptRoot\Private\Get-RebootRequired.ps1
     . $PSScriptRoot\Private\Start-OpsMgrMaintenanceMode.ps1
     . $PSScriptRoot\Private\Invoke-ConfigMgrSoftwareUpdates.ps1
-    . $PSScriptRoot\Private\OperationsManager\PowerShell\OperationsManager\OperationsManager.psd1
+    #. $PSScriptRoot\Private\OperationsManager\PowerShell\OperationsManager\OperationsManager.psd1
 }
 Catch
 {

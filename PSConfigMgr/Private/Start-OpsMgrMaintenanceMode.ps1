@@ -37,7 +37,7 @@ Function Start-OpsMgrMaintenanceMode
     $SaveVerbosePreference = $global:VerbosePreference
     $global:VerbosePreference = 'SilentlyContinue'
 	
-    New-SCOMManagementGroupConnection -ComputerName MgmtServerName
+    New-SCOMManagementGroupConnection -ComputerName $MgmtServerName
     $global:VerbosePreference = $SaveVerbosePreference
 	
     $SaveErrorActionPreference = $global:ErrorActionPreference

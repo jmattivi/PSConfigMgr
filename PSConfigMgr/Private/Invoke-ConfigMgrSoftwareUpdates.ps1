@@ -78,10 +78,16 @@ workflow Invoke-ConfigMgrSoftwareUpdates
             #Check if Reboot switch was used
             If ($Reboot)
             {
-                #InlineScript
-                #{
+                InlineScript
+                {
+                    $SaveVerbosePreference = $global:VerbosePreference
+                    $global:VerbosePreference = 'SilentlyContinue'
+                    . "$using:PSWorkflowRoot\Private\Start-OpsMgrMaintenanceMode.ps1"
+                    Import-Module "$using:PSWorkflowRoot\Private\OperationsManager\PowerShell\OperationsManager\OperationsManager.psd1"
+                    $global:VerbosePreference = $SaveVerbosePreference
+                                
                     Start-OpsMgrMaintenanceMode -ServerName $using:Server -Minutes 15
-                #}
+                }
 				
                 Write-Verbose "INFO   `t$Server - The reboot switch was specified.  A reboot will now occur."
                 Restart-Computer -PSComputerName $Server -Wait -For Wmi -Timeout 600 -Force
@@ -100,10 +106,16 @@ workflow Invoke-ConfigMgrSoftwareUpdates
                     }
                     Else
                     {
-                        #InlineScript
-                        #{
+                        InlineScript
+                        {
+                            $SaveVerbosePreference = $global:VerbosePreference
+                            $global:VerbosePreference = 'SilentlyContinue'
+                            . "$using:PSWorkflowRoot\Private\Start-OpsMgrMaintenanceMode.ps1"
+                            Import-Module "$using:PSWorkflowRoot\Private\OperationsManager\PowerShell\OperationsManager\OperationsManager.psd1"
+                            $global:VerbosePreference = $SaveVerbosePreference
+                                
                             Start-OpsMgrMaintenanceMode -ServerName $using:Server -Minutes 15
-                        #}
+                        }
 						
                         Write-Verbose "INFO   `t$Server - There is a pending reboot for the system.  A reboot will occur prior to installing updates."
                         Restart-Computer -PSComputerName $Server -Wait -For Wmi -Timeout 600 -Force
@@ -155,10 +167,16 @@ workflow Invoke-ConfigMgrSoftwareUpdates
                         }
                         Else
                         {
-                            #InlineScript
-                            #{
+                            InlineScript
+                            {
+                                $SaveVerbosePreference = $global:VerbosePreference
+                                $global:VerbosePreference = 'SilentlyContinue'
+                                . "$using:PSWorkflowRoot\Private\Start-OpsMgrMaintenanceMode.ps1"
+                                Import-Module "$using:PSWorkflowRoot\Private\OperationsManager\PowerShell\OperationsManager\OperationsManager.psd1"
+                                $global:VerbosePreference = $SaveVerbosePreference
+
                                 Start-OpsMgrMaintenanceMode -ServerName $using:Server -Minutes 15
-                            #}
+                            }
 							
                             Restart-Computer -PSComputerName $Server -Wait -For Wmi -Timeout 600 -Force
                             Start-Sleep 150

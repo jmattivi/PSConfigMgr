@@ -25,8 +25,6 @@ Function Start-OpsMgrMaintenanceMode
     #>
 
     Param (
-        [parameter(mandatory = $true)]    
-        [String]$MgmtServerName,    
         [parameter(mandatory = $true)]
         [String]$ServerName,
         [parameter(mandatory = $true)]
@@ -37,7 +35,7 @@ Function Start-OpsMgrMaintenanceMode
     $SaveVerbosePreference = $global:VerbosePreference
     $global:VerbosePreference = 'SilentlyContinue'
 	
-    New-SCOMManagementGroupConnection -ComputerName $MgmtServerName
+    New-SCOMManagementGroupConnection -ComputerName <updateservername>
     $global:VerbosePreference = $SaveVerbosePreference
 	
     $SaveErrorActionPreference = $global:ErrorActionPreference
